@@ -5,7 +5,7 @@ lao_bomb
 
 # Summary
 
-This advisory describes a command injection vulnerability that was found by **Pedro Ribeiro (@pedrib1337 | pedrib@gmail.com)** and **Radek Domanski (@RabbitPro | radek.domanski@gmail.com)** in October 2019 and presented in the **Pwn2Own Mobile 2019 competition** in November 2019. Max Van Amerongen from F-Secure (@maxpl0it) found the same vulnerability independently.
+This advisory describes a command injection vulnerability that was found by **Pedro Ribeiro ([@pedrib1337](https://twitter.com/pedrib1337) | pedrib@gmail.com)** and **Radek Domanski ([@RabbitPro](https://twitter.com/RabbitPro) | radek.domanski@gmail.com)** in October 2019 and presented in the **Pwn2Own Mobile 2019 competition** in Tokyo on November 2019. Max Van Amerongen from F-Secure (@maxpl0it) found the same vulnerability independently.
 
 The vulnerability exists in the tdpServer daemon (*/usr/bin/tdpServer*), running on the router TP-Link Archer A7/C7 (AC1750), hardware version 5, MIPS Architecture, firmware version 190726.
 
@@ -17,7 +17,7 @@ All function offsets and code snippets in this advisory were taken from */usr/bi
 
 This advisory was disclosed publicly on 25.03.2020.
 
-A special thanks to Zero Day Initiative for having the amazing Pwn2Own competition and allowing us to release this information to the public.
+A special thanks to the [Zero Day Initiative](https://www.zerodayinitiative.com/) (ZDI) for hosting us in the amazing Pwn2Own competition and allowing us to release this information to the public.
 
 Copies of this advisory are available on GitHub at:
 * [Pedro's GitHub](https://github.com/pedrib/PoC/blob/master/advisories/Pwn2Own/Tokyo_2019/lao_bomb/lao_bomb.md)
@@ -43,6 +43,14 @@ A Metasploit module was also made available to the public with this advisory, an
 
 This module can be seen in action below (and in the cast file in the same directory as this advisory):
 [![asciicast](https://asciinema.org/a/9TvOe7NM13Zz3OVYWXbnyWCFn.svg)](https://asciinema.org/a/9TvOe7NM13Zz3OVYWXbnyWCFn)
+
+## Update (November 2020)
+
+During our reseach for Pwn2Own Tokyo 2020, we found that TP-Link improperly patched the command injection, and we were able to exploit it again!
+Unfortunately for us, they patched it one day before the competition, killing our (new?) bug. This injection bypass was assigned [CVE-2020-28347](https://nvd.nist.gov/vuln/detail/CVE-2020-28347).
+
+As we had a bit more time to do deeper research, we were also able to improve the injection described here, and updated the [Metasploit module](https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/linux/misc/tplink_archer_a7_c7_lan_rce.rb) to work on older and newer versions with the same injection technique. 
+All details are available in [Pedro's GitHub](https://github.com/pedrib/PoC/blob/master/advisories/Pwn2Own/Tokyo_2020/minesweeper.md) or [Radek's GitHub](https://github.com/rdomanski/Exploits_and_Advisories/blob/master/advisories/Pwn2Own/Tokyo2020/minesweeper.md).
 
 ~ Team Flashback
 
